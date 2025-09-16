@@ -1,0 +1,27 @@
+<div class="VentanaNivel1">
+
+
+    <div>
+        <label for="nombre">Nombre: </label>
+        <input id="nombre" [(ngModel)]="nombreIngresado" (ngModelChange)="emitirDatos()" [placeholder]="'Escriba su nombre'"/>
+    </div>
+
+
+    <div>
+        <label for="apellido">Apellido: </label>
+        <input id="apellido" [(ngModel)]="apellidoIngresado" (ngModelChange)="emitirDatos()" [placeholder]="'Escriba su apellido'"/>
+        <p class="advertencia">{{advertenciaNombres}}</p>
+    </div>
+
+    <div>
+        <label for="dni">DNI: </label>
+        <input id="dni" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="dniIngresado" (ngModelChange)="emitirDatos()" [placeholder]="'Escriba su DNI'"/>
+        <p class="advertencia">{{advertenciaDNI}}</p>
+    </div>
+
+    <div>
+        <label for="fechaNacimiento">Fecha de nacimiento: </label>
+        <input id="fechaNacimiento" type="date" [(ngModel)]="fechaNacimientoIngresada" (ngModelChange)="emitirDatos()" [placeholder]="'Seleccione su fecha de nacimiento'"/>
+    </div>
+
+</div>

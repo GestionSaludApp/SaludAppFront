@@ -1,0 +1,79 @@
+<div class="VentanaNivel0">
+  <p>Lista de especialidades</p>
+
+  <div *ngFor="let especialidad of especialidadesLocal, let i = index" class="VentanaNivel1">
+    {{ especialidad.nombre }}
+
+    <div class="VentanaNivel1">
+      <img [src]="this.prefijoImagen+especialidad.imagen" alt="Logo de especialidad" width="150" height="150">
+    </div>
+
+    <ng-container *ngIf="perfilActivo">
+      <div *ngIf="perfilActivo.rol === 'administrador'">
+        {{ especialidad.duracion }} minutos
+
+        <ng-container *ngIf="perfilActivo">
+          <div *ngIf="perfilActivo.rol === 'administrador'">
+
+            <button name="botonEditarEspecialidad" (click)="mostrarPanelEditarEspecialidad(i)">
+              Editar especialidad
+            </button>
+
+            <div *ngIf="mostrarPanelEditar[i]" class="VentanaNivel1">
+
+              <label for="nombre">Nombre:</label>
+              <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              default= "especialidad.nombre"
+              [(ngModel)]="especialidadEditada.nombre"
+              required
+              />
+
+              <label for="duracion">Duración (minutos):</label>
+              <input
+              type="number"
+              id="duracion"
+              name="duracion"
+              default= "especialidad.duracion"
+              [(ngModel)]="especialidadEditada.duracion"
+              required
+              min="1"
+              />
+
+              <button (click)="editarEspecialidad()">
+                Guardar cambios
+              </button>
+              <button (click)="cerrarPaneles()">
+                Cancelar
+              </button>
+
+            </div>
+
+          </div>
+        </ng-container>
+
+        <button name="botonEliminarEspecialidad" (click)="eliminarEspecialidad(especialidad)">
+          Eliminar especialidad
+        </button>
+
+      </div>
+    </ng-container>
+  </div>
+
+  <ng-container *ngIf="perfilActivo">
+    <div *ngIf="perfilActivo.rol === 'administrador'">
+      <button name="botonAgregarEspecialidad" (click)="mostrarPanelNuevaEspecialidad()">
+        Agregar especialidad
+      </button>
+      <div *ngIf="mostrarPanelNueva">
+        <app-nueva-especialidad></app-nueva-especialidad>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="VentanaNivel0">
+    <button name="exportarExcel" (click)="exportarCSV()">Exportar</button>
+  </div>
+</div>

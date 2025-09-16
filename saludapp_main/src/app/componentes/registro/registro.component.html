@@ -1,0 +1,50 @@
+<div class="VentanaNivel0">
+
+
+    <div>
+        <label for="email">Email: </label>
+        <input id="email" [(ngModel)]="emailIngresado" (ngModelChange)="verificarEmail()" [placeholder]="'Escriba su email'"/>
+        <p class="advertencia">{{advertenciaEmail}}</p>
+    </div>
+
+
+    <div>
+        <label for="password">Contraseña: </label>
+        <input id="password" [(ngModel)]="passwordIngresado" (ngModelChange)="verificarPassword()" [placeholder]="'Escriba su contraseña'"/>
+        <p class="advertencia">{{advertenciaPassword}}</p>
+    </div>
+
+    <div>
+        <label for="confirmarpassword">Confirmar contraseña: </label>
+        <input id="confirmarpassword" [(ngModel)]="passwordConfirmacionIngresado" (ngModelChange)="verificarPassword()" [placeholder]="'Repita su contraseña'"/>
+        <p class="advertencia">{{advertenciaConfirmacionPassword}}</p>
+    </div>
+
+
+    <div>
+        <label for="rol">Rol: </label>
+        <select id="rol" [(ngModel)]="rolSeleccionado">
+            <ng-container *ngFor="let rol of rolesUsuarioLocal">
+                <option [value]="rol">{{ rol }}</option>
+            </ng-container>
+        </select>
+    </div>
+
+    <div>
+        <input id="imagen" type="file" (change)="onFileSelected($event)" accept="image/*">
+    </div>
+
+    <div>
+        <app-nuevo-paciente *ngIf="rolSeleccionado === 'paciente'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-paciente>
+        <app-nuevo-profesional *ngIf="rolSeleccionado === 'profesional'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-profesional>
+        <app-nuevo-administrador *ngIf="rolSeleccionado === 'administrador'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-administrador>
+    </div>
+
+    <div>
+        <button (click)="registrarUsuario()">
+            <i class="fa-solid fa-floppy-disk"></i>
+        </button>
+        Guardar
+    </div>
+
+</div>

@@ -1,0 +1,32 @@
+<div class="VentanaNivel1">
+  
+  <label for="nuevo-perfil">Crear nuevo perfil</label>
+  <select id="nuevo-perfil" [(ngModel)]="perfilNuevoSeleccionado">
+    <option [ngValue]="null">-- tipo de perfil --</option>
+    <option *ngFor="let perfil of posiblesPerfiles" [ngValue]="perfil">
+      {{ perfil }}
+    </option>
+  </select>
+  
+  <!-- Categoría -->
+  <div *ngIf="perfilNuevoSeleccionado">
+    <label for="nueva-categoria">Concepto de perfil</label>
+    <select id="nueva-categoria" [(ngModel)]="categoriaNuevoPerfil" (ngModelChange)="reiniciarFormulario()">
+      <option>-- categoría de perfil --</option>
+      <option *ngFor="let categoria of categoriasPerfilLocal" [ngValue]="categoria">
+        {{ categoria }}
+      </option>
+    </select>
+
+    <!-- Datos -->
+    <ng-container *ngIf="mostrarFormularioNuevoPerfil">
+      <app-nuevo-paciente *ngIf="perfilNuevoSeleccionado === 'paciente'" [categoria]="categoriaNuevoPerfil" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-paciente>
+      <app-nuevo-profesional *ngIf="perfilNuevoSeleccionado === 'profesional'" [categoria]="categoriaNuevoPerfil" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-profesional>
+      <app-nuevo-administrador *ngIf="perfilNuevoSeleccionado === 'administrador'" [categoria]="categoriaNuevoPerfil" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-administrador>
+    </ng-container>
+
+    <button (click)="guardarNuevoPerfil()">REGISTRAR PERFIL</button>
+    <button *ngIf="perfilNuevoSeleccionado" (click)="limpiarFormulario()">CANCELAR</button>
+  </div>
+
+</div>

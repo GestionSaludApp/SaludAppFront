@@ -1,0 +1,8 @@
+<p>Turnos Asignados</p>
+
+<div *ngFor="let turno of turnosActivos">
+    {{turno.especialidad()}}
+    {{turno.seccional()}}
+    {{this.diasLocal[turno.diaSemana] | titlecase }}
+    {{leerMinutos(turno.horaInicio)}}
+</div>

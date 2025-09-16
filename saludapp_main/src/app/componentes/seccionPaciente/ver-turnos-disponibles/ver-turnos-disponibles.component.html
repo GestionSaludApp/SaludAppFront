@@ -1,0 +1,37 @@
+<div class="VentanaNivel0">
+
+<h2>Buscar turnos disponibles</h2>
+
+<label>Día de la semana:
+    <select [(ngModel)]="filtroDia" (change)="filtrar()">
+        <option [ngValue]="null">-- Todos --</option>
+        <option *ngFor="let dia of diasLocal; let i = index" [ngValue]="i">{{ dia }}</option>
+    </select>
+</label>
+
+<label>Seccional:
+    <select [(ngModel)]="filtroSeccional" (change)="filtrar()">
+      <option [ngValue]="null">-- Todas --</option>
+      <option *ngFor="let seccional of seccionalesLocal" [ngValue]="seccional.idSeccional">{{ seccional.nombre }}</option>
+    </select>
+  </label>
+
+  <label>Especialidad:
+    <select [(ngModel)]="filtroEspecialidad" (change)="filtrar()">
+      <option [ngValue]="null">-- Todas --</option>
+      <option *ngFor="let especialidad of especialidadesLocal" [ngValue]="especialidad.idEspecialidad">{{ especialidad.nombre }}</option>
+    </select>
+  </label>
+
+</div>
+
+<div class="VentanaNivel1">
+  <h3>Turnos disponibles</h3>
+  <ul *ngIf="turnosDisponibles.length > 0">
+    <li *ngFor="let t of turnosDisponibles">
+      <button (click)="solicitarTurno(t)">Solicitar</button>
+      {{t.especialidad()}} en {{ t.seccional() }}
+      {{ t.dia() }} {{ t.horarioInicio() }}
+    </li>
+  </ul>
+</div>

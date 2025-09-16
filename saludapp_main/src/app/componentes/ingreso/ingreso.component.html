@@ -1,0 +1,33 @@
+<div class="VentanaNivel0">
+
+    <br>
+    
+    <div>
+        <label for="email">Email: </label>
+        <input id="email" [(ngModel)]="emailIngresado" (ngModelChange)="verificarEmail()" [placeholder]="'Escriba su email'"/>
+        <p class="advertencia">{{advertenciaEmail}}</p>
+    </div>
+
+
+    <div>
+        <label for="password">Contraseña: </label>
+        <input id="password" [(ngModel)]="passwordIngresado" [placeholder]="'Escriba su contraseña'"/>
+    </div>
+
+    <div>
+        <button (click)="ingresar()">
+            <i class="fa-solid fa-right-to-bracket"></i>
+        </button>
+        Ingresar
+    </div>
+
+</div>
+
+
+
+
+<div>
+    <br>
+    <br>
+    <button name="botonBots" (click)="crearBots()">(solo test) Crear 50 BOTS de profesionales</button>
+</div>
