@@ -1,0 +1,62 @@
+.registro-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    padding: 2rem 1rem;
+  }
+  
+  .registro-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 900px;
+    width: 100%;
+  }
+  
+  .subtitulo { color: #666; margin-bottom: 1.5rem; }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+  
+  .form-group input {
+    border: 1px solid #d0d7de;
+    border-radius: 10px;
+    padding: .6rem .8rem;
+    outline: none;
+  }
+  
+  .btn {
+    border: none;
+    border-radius: 10px;
+    padding: .75rem 1rem;
+    cursor: pointer;
+  }
+  
+  .btn-primary { background: #0d6efd; color: #fff; }
+  .btn-secondary { background: #6c757d; color: #fff; margin-top: .8rem; }
+  
+  .error { color: #b00020; margin-top: .8rem; }
+  
+  .credencial {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px dashed #cfd8dc;
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+.credencial img { 
+    width: 180px; height: 180px; 
+}

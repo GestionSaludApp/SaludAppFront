@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { rolesUsuario } from '../../funciones/listas';
-import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { BasededatosService } from '../../servicios/basededatos.service';
 import { Usuario } from '../../clases/usuario';
@@ -9,11 +8,12 @@ import { NavegacionService } from '../../servicios/navegacion.service';
 import { NuevoPacienteComponent } from "../nuevosElementos/nuevo-paciente/nuevo-paciente.component";
 import { NuevoProfesionalComponent } from "../nuevosElementos/nuevo-profesional/nuevo-profesional.component";
 import { NuevoAdministradorComponent } from "../nuevosElementos/nuevo-administrador/nuevo-administrador.component";
-
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [FormsModule, NgFor, NuevoPacienteComponent, NuevoProfesionalComponent, NuevoAdministradorComponent, NgIf],
+  imports: [FormsModule, ReactiveFormsModule, NgFor, NuevoPacienteComponent, NuevoProfesionalComponent, NuevoAdministradorComponent, NgIf, CommonModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })

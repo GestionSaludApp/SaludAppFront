@@ -4,12 +4,12 @@ import { NavegacionService } from '../../servicios/navegacion.service';
 import { Perfil } from '../../clases/perfil';
 import { Subscription } from 'rxjs';
 import { NgIf } from '@angular/common';
-import { NavbarComponent } from '../../shared/navbar/navbar.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [NgIf, NavbarComponent],
+  imports: [NgIf, RouterLink],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })

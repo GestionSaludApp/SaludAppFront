@@ -3,11 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { BasededatosService } from '../../servicios/basededatos.service';
 import { NavegacionService } from '../../servicios/navegacion.service';
 import { generarProfesionales } from '../../funciones/bots';
+import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ingreso',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink, CommonModule],
   templateUrl: './ingreso.component.html',
   styleUrl: './ingreso.component.css'
 })
@@ -16,6 +18,8 @@ export class IngresoComponent {
   emailIngresado: string = '';
   advertenciaEmail: string = '';
   passwordIngresado: string = '';
+
+  showPassword: boolean = false;
 
   constructor(private baseDeDatos: BasededatosService, private navegar: NavegacionService) {}
 
@@ -53,11 +57,10 @@ export class IngresoComponent {
     }
   }
 
-
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
 
   crearBots(){generarProfesionales(0, 50, this.baseDeDatos);}
-
-
-
 
 }

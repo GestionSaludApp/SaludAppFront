@@ -4,11 +4,12 @@ import { Subscription } from 'rxjs';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 import { NgIf } from '@angular/common';
 import { Perfil } from '../../../clases/perfil';
+import { NavbarComponent } from "../../../shared/navbar/navbar.component";
 
 @Component({
   selector: 'app-encabezado',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, NavbarComponent],
   templateUrl: './encabezado.component.html',
   styleUrl: './encabezado.component.css'
 })
