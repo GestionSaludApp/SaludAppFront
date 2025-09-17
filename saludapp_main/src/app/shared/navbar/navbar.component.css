@@ -1,0 +1,29 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #1976d2;
+    padding: 15px;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .navbar a:hover,
+  .navbar a.active {
+    background-color: #1565c0;
+    border-radius: 5px;
+  }
+  
+  .btn-login {
+    background-color: white;
+    color: #1976d2;
+    padding: 8px 15px;
+    border-radius: 5px;
+  }
+  
