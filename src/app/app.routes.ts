@@ -15,8 +15,7 @@ import { EspecialidadesComponent } from './componentes/seccionAdministrador/espe
 import { SeccionalesComponent } from './componentes/seccionAdministrador/seccionales/seccionales.component';
 import { AtencionComponent } from './componentes/seccionProfesional/atencion/atencion.component';
 
-import { AppComponent } from './app.component';
-
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 export const routes: Routes = [
 
@@ -37,9 +36,8 @@ export const routes: Routes = [
 
     { path: 'turnosDisponibles', component: VerTurnosDisponiblesComponent },
     { path: 'turnosAtencion', component: AtencionComponent },
-    { path: 'navbar', component:AppComponent},
     
-
+    {path: 'navbar', component: NavbarComponent},
 
 
 ];

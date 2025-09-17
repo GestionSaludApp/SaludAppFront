@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+
+<div *ngIf="perfilActivo">
+    <div>
+        <button name="botonDatosPersonales" (click)="irDatosPersonales()">Datos personales</button>
+    </div>
+
+    <div *ngIf="perfilActivo.rol==='paciente'">
+        <button name="botonCalendario" (click)="irCalendario()">Calendario</button>
+        <button name="botonTurnosDisponibles" (click)="irTurnosDisponibles()">Nuevo turno</button>
+    </div>
+
+    <div *ngIf="perfilActivo.rol==='profesional'">
+        <button name="botonTurnosAtencion" (click)="irTurnosAtencion()">Ver turnos</button>
+    </div>
+
+</div>
