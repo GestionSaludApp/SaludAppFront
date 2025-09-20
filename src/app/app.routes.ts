@@ -16,6 +16,11 @@ import { SeccionalesComponent } from './componentes/seccionAdministrador/seccion
 import { AtencionComponent } from './componentes/seccionProfesional/atencion/atencion.component';
 
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { OlvidecontraComponent } from './componentes/olvidecontra/olvidecontra.component';
+import { ContactenosComponent } from './componentes/contactenos/contactenos.component';
+import { GestiononlineComponent } from './componentes/gestiononline/gestiononline.component';
+import { TurnosComponent } from './componentes/turnos/turnos.component';
+import { EstudiosComponent } from './componentes/estudios/estudios.component';
 
 export const routes: Routes = [
 
@@ -38,6 +43,11 @@ export const routes: Routes = [
     { path: 'turnosAtencion', component: AtencionComponent },
     
     {path: 'navbar', component: NavbarComponent},
+    {path: 'olvidecontra', component: OlvidecontraComponent},
+    {path: 'contactenos', component: ContactenosComponent},
+    {path: 'gestiononline', component: GestiononlineComponent},
+    {path: 'turnos', component: TurnosComponent},
+    {path: 'estudios', component: EstudiosComponent},
 
 
 ];

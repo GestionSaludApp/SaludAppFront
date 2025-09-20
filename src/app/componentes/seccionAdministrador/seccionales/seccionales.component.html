@@ -1,34 +1,43 @@
-<div class="VentanaNivel0">
+<div class="contenedor-seccionales VentanaNivel0">
 
-    <p>Lista de seccionales</p>
-
-    <div *ngFor="let seccional of seccionalesLocal" class="VentanaNivel1">
-        {{seccional.nombre}} - {{seccional.direccion}} - {{seccional.ciudad}} - {{seccional.provincia}}
-        {{seccional.telefono}} - {{seccional.email}}
-
-        <div class="VentanaNivel1">
-            <img [src]="this.prefijoImagen+seccional.imagen" alt="Logo de seccional" width="150" height="150">
+    <h2 class="titulo-lista">Lista de Seccionales</h2>
+  
+    <div class="grid-seccionales">
+      <div *ngFor="let seccional of seccionalesLocal" class="card-seccional VentanaNivel1">
+        
+        <div class="info-seccional">
+          <h3>{{ seccional.nombre }}</h3>
+          <p><strong>Dirección:</strong> {{seccional.direccion}}</p>
+          <p><strong>Ciudad:</strong> {{seccional.ciudad}}</p>
+          <p><strong>Provincia:</strong> {{seccional.provincia}}</p>
+          <p><strong>Teléfono:</strong> {{seccional.telefono}}</p>
+          <p><strong>Email:</strong> {{seccional.email}}</p>
         </div>
-
-        <ng-container *ngIf="perfilActivo">
-        <div *ngIf="perfilActivo.rol==='administrador'">
-            {{seccional.nombre}} *placeholder*
-            <button name="botonEditarSeccional" (click)="proxy()">Editar seccional</button>
-            <button name="botonEliminarSeccional" (click)="eliminarSeccional(seccional)">Eliminar seccional</button>
+  
+        <div class="imagen-seccional">
+          <img [src]="prefijoImagen+seccional.imagen" alt="Logo de seccional">
         </div>
-    </ng-container>
+  
+        <ng-container *ngIf="perfilActivo?.rol==='administrador'">
+          <div class="acciones-seccional">
+            <button class="btn editar" (click)="proxy()">✏️ Editar</button>
+            <button class="btn eliminar" (click)="eliminarSeccional(seccional)">🗑️ Eliminar</button>
+          </div>
+        </ng-container>
+  
+      </div>
     </div>
-
-    <ng-container *ngIf="perfilActivo">
-        <div *ngIf="perfilActivo.rol==='administrador'">
-            <button name="botonAgregarSeccional" (click)="mostrarPanelNuevaSeccional()">Agregar seccional</button>
-            <div *ngIf="mostrarPanelNueva">
-                <app-nueva-seccional></app-nueva-seccional>
-            </div>
+  
+    <ng-container *ngIf="perfilActivo?.rol==='administrador'">
+      <div class="acciones-globales">
+        <button class="btn agregar" (click)="mostrarPanelNuevaSeccional()">➕ Agregar Seccional</button>
+        <div *ngIf="mostrarPanelNueva">
+          <app-nueva-seccional></app-nueva-seccional>
         </div>
+      </div>
     </ng-container>
-
-    <div class="VentanaNivel0">
-        <button name="exportarExcel" (click)="exportarCSV()">Exportar</button>
+  
+    <div class="acciones-globales">
+      <button class="btn exportar" (click)="exportarCSV()">⬇️ Exportar CSV</button>
     </div>
-</div>
+</div>  

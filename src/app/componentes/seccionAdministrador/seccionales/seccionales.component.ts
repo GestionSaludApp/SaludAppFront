@@ -8,6 +8,7 @@ import { UsuarioActivoService } from '../../../servicios/usuario-activo.service'
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { seccionales } from '../../../funciones/listas';
 import { prefijoImagen } from '../../../credenciales/datos';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-seccionales',
@@ -56,6 +57,13 @@ export class SeccionalesComponent implements OnInit{
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    Swal.fire({
+      title: 'Exportación exitosa',
+      text: 'El archivo CSV fue generado correctamente.',
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    });
   }
 
   generarCSV(seccionales: Seccional[]): string {
@@ -94,17 +102,39 @@ export class SeccionalesComponent implements OnInit{
     return nuevaPalabra;
   }
 
-  eliminarSeccional(seccional: Seccional){
-    this.baseDeDatos.eliminarSeccional(this.usuarioActivo.idUsuario, seccional).subscribe({
-      next: (res) => {
-        console.log('Seccional eliminada:', res);
-      },
-      error: (err) => {
-        console.error('Error al eliminar:', err);
-      }
-    });      
-  }
-
+  eliminarSeccional(seccional: Seccional) {
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: `Se eliminará la seccional: ${seccional.nombre}`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.baseDeDatos.eliminarSeccional(this.usuarioActivo.idUsuario, seccional).subscribe({
+        next: (res) => {
+          console.log('Seccional eliminada:', res);
+          Swal.fire(
+            'Eliminado',
+            'La seccional fue eliminada con éxito.',
+            'success'
+          );
+        },
+        error: (err) => {
+          console.error('Error al eliminar:', err);
+          Swal.fire(
+            'Error',
+            'Ocurrió un problema al eliminar la seccional.',
+            'error'
+          );
+        }
+      });
+    }
+  });
+}
   proxy(){}
 
 }

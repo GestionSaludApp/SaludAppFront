@@ -9,6 +9,7 @@ import { Perfil } from '../../../clases/perfil';
 import { NuevaEspecialidadComponent } from "../../nuevosElementos/nueva-especialidad/nueva-especialidad.component";
 import { FormsModule } from '@angular/forms';
 import { prefijoImagen } from '../../../credenciales/datos';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-especialidades',
@@ -71,6 +72,13 @@ export class EspecialidadesComponent implements OnInit{
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+
+  Swal.fire({
+    title: 'Exportación exitosa',
+    text: 'El archivo CSV fue generado correctamente.',
+    icon: 'success',
+    confirmButtonText: 'Ok'
+  });
   }
 
   generarCSV(especialidades: Especialidad[]): string {
@@ -103,25 +111,64 @@ export class EspecialidadesComponent implements OnInit{
     return nuevaPalabra;
   }
 
-  eliminarEspecialidad(especialidad: Especialidad){
-    this.baseDeDatos.eliminarEspecialidad(this.usuarioActivo.idUsuario, especialidad).subscribe({
-      next: (res) => {
-        console.log('Especialidad eliminada:', res);
-      },
-      error: (err) => {
-        console.error('Error al eliminar:', err);
+  eliminarEspecialidad(especialidad: any) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: `Se eliminará la especialidad: ${especialidad.nombre}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.baseDeDatos.eliminarEspecialidad(this.usuarioActivo.idUsuario, especialidad).subscribe({
+          next: (res) => {
+            console.log('Especialidad eliminada:', res);
+            Swal.fire(
+              'Eliminada',
+              'La especialidad fue eliminada con éxito.',
+              'success'
+            );
+          },
+          error: (err) => {
+            console.error('Error al eliminar:', err);
+            Swal.fire(
+              'Error',
+              'Ocurrió un problema al eliminar la especialidad.',
+              'error'
+            );
+          }
+        });
       }
-    });      
+    });
   }
 
   editarEspecialidad() {
     this.baseDeDatos.editarEspecialidad(this.usuarioActivo.idUsuario, this.especialidadEditada).subscribe({
       next: (resp) => {
-        console.log('Especialidad actualizada', resp);
-        this.cerrarPaneles();
+        //alerta de exito
+        Swal.fire({
+          icon: 'success',
+          title: '¡Actualizado!',
+          text: 'La especialidad se actualizó correctamente.',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Aceptar'
+        }).then(() => {
+          this.cerrarPaneles(); //Cerramos paneles 
+        });
       },
       error: (err) => {
         console.error('Error al actualizar', err);
+        //alerta de error
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se pudo actualizar la especialidad. Intenta nuevamente.',
+          confirmButtonColor: '#d33',
+          confirmButtonText: 'Aceptar'
+        });
       },
     });
   }
@@ -132,10 +179,4 @@ export class EspecialidadesComponent implements OnInit{
       this.mostrarPanelEditar[i] = false;
     }
   }
-
-
-
-
-
-
 }

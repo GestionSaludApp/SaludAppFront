@@ -1,0 +1,104 @@
+/* Contenedor general */
+.perfil-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Selección de perfil */
+  .perfil-seleccion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .perfil-seleccion select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .btn.cambiar-perfil {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .btn.cambiar-perfil:hover {
+    background-color: #45a049;
+  }
+  
+  /* Perfil activo */
+  .perfil-datos {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+  }
+  
+  .perfil-datos h3 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  /* Imagen de perfil */
+  .perfil-imagen {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  
+  .perfil-imagen img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #4caf50;
+  }
+  
+  /* Información general */
+  .perfil-info p {
+    margin: 5px 0;
+    line-height: 1.5;
+  }
+  
+  .perfil-info strong {
+    color: #555;
+  }
+  
+  /* Disponibilidad horaria */
+  .perfil-profesional ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .perfil-profesional li {
+    background: #e0f7fa;
+    margin: 4px 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  /* Nuevo perfil */
+  .nuevo-perfil {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Botones generales */
+  .btn {
+    transition: 0.3s;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+  }
+  

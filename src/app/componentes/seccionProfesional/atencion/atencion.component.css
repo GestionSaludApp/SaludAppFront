@@ -1,0 +1,66 @@
+.turnos-activos-container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fefefe;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .turnos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+  }
+  
+  .tarjeta-turno {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .turno-info {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .turno-info span {
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .especialidad {
+    color: #4caf50;
+    font-weight: bold;
+  }
+  
+  .btn-terminar {
+    background-color: #f44336;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .btn-terminar:hover {
+    background-color: #e53935;
+  }
+  
+  p {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+  }
+  

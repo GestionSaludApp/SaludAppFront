@@ -27,3 +27,60 @@
     border-radius: 5px;
   }
   
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4caf50; /* ejemplo de color */
+    color: #fff;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .saludo {
+    font-weight: 500;
+  }
+  
+  .btn-cerrar {
+    background-color: #fff;
+    color: #4caf50;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+  
+  .btn-cerrar:hover {
+    background-color: #f0f0f0;
+  }
+  
+
+  /* Navbar secundaria */
+.navbar-secundaria {
+  background-color: #f8f9fa; /* Gris clarito */
+  display: flex;
+  padding: 8px 20px;
+  gap: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar-secundaria a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.navbar-secundaria a:hover {
+  background-color: #e9ecef;
+}
+
