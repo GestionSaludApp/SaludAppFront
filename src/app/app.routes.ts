@@ -8,7 +8,6 @@ import { ErrorComponent } from './componentes/estaticos/error/error.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 
 import { DatosPersonalesComponent } from './componentes/usuario/datos-personales/datos-personales.component';
-import { CalendarioComponent } from './componentes/usuario/calendario/calendario.component';
 import { VerTurnosDisponiblesComponent } from './componentes/seccionPaciente/ver-turnos-disponibles/ver-turnos-disponibles.component';
 
 import { EspecialidadesComponent } from './componentes/seccionAdministrador/especialidades/especialidades.component';
@@ -19,8 +18,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { OlvidecontraComponent } from './componentes/olvidecontra/olvidecontra.component';
 import { ContactenosComponent } from './componentes/contactenos/contactenos.component';
 import { GestiononlineComponent } from './componentes/gestiononline/gestiononline.component';
-import { TurnosComponent } from './componentes/turnos/turnos.component';
 import { EstudiosComponent } from './componentes/estudios/estudios.component';
+import { ConocermasComponent } from './componentes/conocermas/conocermas.component';
 
 export const routes: Routes = [
 
@@ -28,7 +27,6 @@ export const routes: Routes = [
 
     { path: 'inicio', component: InicioComponent },
     { path: 'datosPersonales', component: DatosPersonalesComponent },
-    { path: 'calendario', component: CalendarioComponent },
 
     { path: 'registro', component: RegistroComponent },
     { path: 'ingreso', component: IngresoComponent },
@@ -46,8 +44,8 @@ export const routes: Routes = [
     {path: 'olvidecontra', component: OlvidecontraComponent},
     {path: 'contactenos', component: ContactenosComponent},
     {path: 'gestiononline', component: GestiononlineComponent},
-    {path: 'turnos', component: TurnosComponent},
     {path: 'estudios', component: EstudiosComponent},
+    {path: 'conocermas', component: ConocermasComponent},
 
 
 ];
