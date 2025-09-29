@@ -31,8 +31,23 @@ export class InicioComponent implements OnInit{
     }
   }
 
-  irDatosPersonales(){this.navegar.irDatosPersonales();}
-  irTurnosDisponibles(){this.navegar.irTurnosDisponibles();}
-  irCalendario(){this.navegar.irCalendario();}
-  irTurnosAtencion(){this.navegar.irTurnosAtencion();}
+  //subBarra
+  activeTab: string = 'datosPersonales';
+
+  irDatosPersonales() {
+    this.activeTab = 'datosPersonales';
+    this.navegar.irDatosPersonales();
+  }
+
+  irTurnosDisponibles() {
+    this.activeTab = 'turnosDisponibles';
+    this.navegar.irTurnosDisponibles();
+  }
+
+  irTurnosAtencion(){
+    this.activeTab = 'turnosAtencion';
+    this.navegar.irTurnosAtencion();
+  }
+
+
 }

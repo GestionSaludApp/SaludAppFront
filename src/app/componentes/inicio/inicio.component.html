@@ -1,18 +1,24 @@
-<div *ngIf="perfilActivo">
-    <div>
-        <button name="botonDatosPersonales" (click)="irDatosPersonales()">Datos personales</button>
-    </div>
+<div *ngIf="perfilActivo" class="subbarra-tabs">
+  <button 
+    name="botonDatosPersonales" 
+    (click)="irDatosPersonales()" 
+    [class.active]="activeTab==='datosPersonales'">Datos personales</button>
 
-    <div *ngIf="perfilActivo.rol==='paciente'">
-        <button name="botonCalendario" (click)="irCalendario()">Calendario</button>
-        <button name="botonTurnosDisponibles" (click)="irTurnosDisponibles()">Nuevo turno</button>
-    </div>
+  <ng-container *ngIf="perfilActivo.rol==='paciente'">
+    <button 
+      name="botonTurnosDisponibles" 
+      (click)="irTurnosDisponibles()" 
+      [class.active]="activeTab==='turnosDisponibles'">Nuevo turno</button>
+  </ng-container>
 
-    <div *ngIf="perfilActivo.rol==='profesional'">
-        <button name="botonTurnosAtencion" (click)="irTurnosAtencion()">Ver turnos</button>
-    </div>
-
+  <ng-container *ngIf="perfilActivo.rol==='profesional'">
+    <button 
+      name="botonTurnosAtencion" 
+      (click)="irTurnosAtencion()" 
+      [class.active]="activeTab==='turnosAtencion'">Ver turnos</button>
+  </ng-container>
 </div>
+
 
 <section class="hero-img">
     <img src="recepcion.jpg" alt="Recepción" class="hero-img-full" />

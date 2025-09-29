@@ -3,8 +3,8 @@ import { especialidades, seccionales } from "../funciones/listas";
 
 export class Turno {
     idTurno: string;
-    idPerfilPaciente: number = 0;
-    idPerfilProfesional: number;
+    idPaciente: number = 0;
+    idProfesional: number = 0;
     idSeccional: number;
     idEspecialidad: number;
     diaSemana: number;
@@ -13,7 +13,6 @@ export class Turno {
 
     constructor(){
         this.idTurno = '';
-        this.idPerfilProfesional = 0;
         this.idSeccional = 0;
         this.idEspecialidad = 0;
         this.diaSemana = 0;

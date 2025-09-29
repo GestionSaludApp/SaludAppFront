@@ -17,10 +17,6 @@ export class Perfil<T = Perfil<any>> {
     apellido: string;
     dni: string;
     fechaNacimiento: string;
-  
-    //desde usuariosRol [específicos]
-    get especialidad(): string | null {return null;}
-    get cronograma(): Disponibilidad[] | null {return null;}
 
     constructor(){
         this.idPerfil = 0;
@@ -60,13 +56,6 @@ export class Profesional extends Perfil<Profesional>{
       this.rol = 'profesional';
       this.idEspecialidad = 0;
       this.disponibilidad = [];
-    }
-
-    override get especialidad(): string | null {
-      return especialidades[this.idEspecialidad].nombre;
-    }
-    override get cronograma(): Disponibilidad[] | null {
-      return this.disponibilidad;
     }
     
     getCargaHorariaTotal() {

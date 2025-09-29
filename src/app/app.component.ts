@@ -13,13 +13,4 @@ import { PieComponent } from "./componentes/estaticos/pie/pie.component";
 })
 export class AppComponent {
   title = 'saludapp';
-
-  ocultarFooter = false;
-
-  constructor(private router: Router) {
-    this.router.events.subscribe(() => {
-      const url = this.router.url;
-      this.ocultarFooter = url.includes('ingreso') || url.includes('registro');
-    });
-  }
 }

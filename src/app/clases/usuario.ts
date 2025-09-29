@@ -10,7 +10,7 @@ export class Usuario {
   fechaCreacion: string;
   ultimoIngreso: string;
   perfilActivo: Paciente | Profesional | Administrador | null | undefined;
-  perfiles: Perfil[]; //id de la tabla de usuariosRol subrogados; en perfiles[0] figura el propio.
+  perfiles: Perfil[];
 
   //El constructor inicializa todo vacio para facilitar la gestion en el resto de los componentes.
   constructor(){

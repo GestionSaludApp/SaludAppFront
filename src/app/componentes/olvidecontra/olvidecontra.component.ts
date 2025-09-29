@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
@@ -8,7 +7,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-olvidecontra',
   standalone: true,
-  imports: [NavbarComponent, FormsModule, CommonModule, RouterLink],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './olvidecontra.component.html',
   styleUrl: './olvidecontra.component.css'
 })

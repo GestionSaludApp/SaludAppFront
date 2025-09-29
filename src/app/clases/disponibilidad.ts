@@ -24,12 +24,6 @@ export class Disponibilidad {
         Object.assign(this, datos);
     }
 
-    seccional():string{
-        return seccionales[this.idSeccional].nombre;
-    }
-    especialidad():string{
-        return especialidades[this.idEspecialidad].nombre;
-    }
     dia():string{
         return dias[this.diaSemana];
     }

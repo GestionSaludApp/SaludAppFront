@@ -53,6 +53,10 @@ export class BasededatosService {
     }
   }
 
+  activarUsuario(email: string, password: string, codigo: string): Observable<any> {
+    return this.http.post(this.apiUrl + '/activarMiUsuario', { email, password, codigo });
+  }
+
   ingresarUsuario(email: string, password: string): Observable<Usuario> {
     const body = { email, password };
 
@@ -246,7 +250,7 @@ export class BasededatosService {
     });
   }
 
-  editarSeccional(idUsuario: number, datosSeccional: Especialidad): Observable<any>{
+  editarSeccional(idUsuario: number, datosSeccional: Seccional): Observable<any>{
     const body = { idUsuario, datosSeccional };
     return this.http.post(this.apiUrl + '/editarSeccional', body);
   }

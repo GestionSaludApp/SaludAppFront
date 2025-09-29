@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contactenos',
   standalone: true,
-  imports: [NavbarComponent, FormsModule],
+  imports: [FormsModule],
   templateUrl: './contactenos.component.html',
   styleUrls: ['./contactenos.component.css']
 })

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BasededatosService } from '../../servicios/basededatos.service';
 import { NavegacionService } from '../../servicios/navegacion.service';
-import { generarProfesionales } from '../../funciones/bots';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -60,7 +59,5 @@ export class IngresoComponent {
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
-
-  crearBots(){generarProfesionales(0, 50, this.baseDeDatos);}
 
 }

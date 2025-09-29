@@ -1,3 +1,34 @@
+.subbarra-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid #ccc; /* línea de la subbarra */
+    background-color: #f9f9f9;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+}
+
+.subbarra-tabs button {
+    flex: 1; /* que todos tengan el mismo tamaño */
+    padding: 10px 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.subbarra-tabs button:hover {
+    background-color: #eaeaea;
+}
+
+.subbarra-tabs button.active {
+    background-color: #ffffff;
+    border-bottom: 3px solid #007bff; /* marca la pestaña activa */
+    font-weight: 600;
+    color: #007bff;
+}
+
+
 /* Hero */
 .hero-img {
     position: relative;

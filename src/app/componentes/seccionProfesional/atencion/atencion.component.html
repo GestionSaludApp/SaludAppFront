@@ -1,40 +1,17 @@
-<!--
 <p>Turnos Activos</p>
 
 <div *ngFor="let turno of turnosActivos" class="VentanaNivel0">
-    {{turno.especialidad()}}
-    {{turno.seccional()}}
-    {{this.diasLocal[turno.diaSemana] | titlecase }}
-    {{leerMinutos(turno.horaInicio)}}
-    <button>Terminar Turno</button>
+  {{ turno.especialidad() }}
+  {{ turno.seccional() }}
+  {{ diasLocal[turno.diaSemana] | titlecase }}
+  {{ leerMinutos(turno.horaInicio) }}
+  <button (click)="terminarTurno(turno)">Terminar Turno</button>
 </div>
 
-<app-nuevo-reporte></app-nuevo-reporte>
--->
-
-<div class="VentanaNivel0 turnos-activos-container">
-  <h3>Turnos Activos</h3>
-
-  <div *ngIf="turnosActivos.length > 0; else sinTurnos" class="turnos-grid">
-    <div *ngFor="let turno of turnosActivos" class="tarjeta-turno">
-      <div class="turno-info">
-        <span class="especialidad">{{ turno.especialidad() }}</span>
-        <span class="seccional">{{ turno.seccional() }}</span>
-        <span class="fecha">{{ diasLocal[turno.diaSemana] | titlecase }} {{ leerMinutos(turno.horaInicio) }}</span>
-      </div>
-      <button class="btn-terminar" (click)="terminarTurno(turno)">Terminar Turno</button>
-    </div>
-  </div>
-
-  <ng-template #sinTurnos>
-    <p>No hay turnos activos.</p>
-  </ng-template>
-</div>
-
-<!-- Formulario de nuevo reporte -->
 <app-nuevo-reporte
   *ngIf="turnoSeleccionado"
-  [idPerfilPaciente]="turnoSeleccionado.idPerfilPaciente"
-  [idPerfilProfesional]="turnoSeleccionado.idPerfilProfesional"
+  [idPerfilPaciente]="turnoSeleccionado.idPaciente"
+  [idPerfilProfesional]="turnoSeleccionado.idProfesional"
+  [idTurno]="turnoSeleccionado.idTurno"
   (cerrar)="cerrarReporte()">
 </app-nuevo-reporte>

@@ -7,7 +7,6 @@ export const categoriasPerfil = ['principal', 'alternativo', 'subrogado'];
 export var especialidades: Especialidad[] = [];
 export var seccionales: Seccional[] = [];
 
-//EJECUTAR AL INICIAR LA APP?
 export function cargarEspecialidades(listaEspecialidades: Especialidad[]) {
   especialidades = [];
   for (let especialidad of listaEspecialidades) {
