@@ -16,6 +16,7 @@ import { BasededatosService } from '../../../servicios/basededatos.service';
 export class NuevoReporteComponent {
   @Input() idPerfilPaciente!: number;
   @Input() idPerfilProfesional!: number;
+  @Input() idTurno!: string; 
   @Output() cerrar = new EventEmitter<void>();
 
   imagenSeleccionada: File | null = null;
@@ -26,6 +27,7 @@ export class NuevoReporteComponent {
   ngOnInit() {
     this.nuevoReporte.idPerfilPaciente = this.idPerfilPaciente;
     this.nuevoReporte.idPerfilProfesional = this.idPerfilProfesional;
+    this.nuevoReporte.idTurno = this.idTurno;
   }
 
   onFileSelected(event: any): void {

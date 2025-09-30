@@ -46,41 +46,64 @@ export class Paciente extends Perfil<Paciente>{
 
 }
 
-export class Profesional extends Perfil<Profesional>{
-    idEspecialidad: number;
-    disponibilidad: Disponibilidad[];
-  
-    //El constructor inicializa todo vacio para facilitar la gestion en el resto de los componentes.
-    constructor(){
-      super();
-      this.rol = 'profesional';
-      this.idEspecialidad = 0;
-      this.disponibilidad = [];
-    }
-    
-    getCargaHorariaTotal() {
-      let horasTotal = 0;
+export class Profesional extends Perfil<Profesional> {
+  idEspecialidad: number;
+  disponibilidad: Disponibilidad[];
 
-      for (let disp of this.disponibilidad) {
+  constructor() {
+    super();
+    this.rol = 'profesional';
+    this.idEspecialidad = 0;
+    this.disponibilidad = [];
+  }
+
+  // 👉 Nombre de la especialidad
+  get especialidad(): string {
+    return especialidades.find(e => e.idEspecialidad === this.idEspecialidad)?.nombre || 'Sin especialidad';
+  }
+
+  // 👉 Cronograma legible
+  get cronograma() {
+    return this.disponibilidad.map(d => ({
+      seccional: () => `Seccional ${d.idSeccional}`,
+      dia: () => this.nombreDia(d.diaSemana),
+      horarioInicio: () => this.formatearHora(d.horaInicio),
+      horarioFin: () => this.formatearHora(d.horaFin)
+    }));
+  }
+
+  private nombreDia(dia: number): string {
+    const dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    return dias[dia] || `Día ${dia}`;
+  }
+
+  private formatearHora(hora: number): string {
+    // si hora viene en minutos, convierto a hh:mm
+    const h = Math.floor(hora);
+    const m = (hora % 1) * 60; 
+    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+  }
+
+  // Métodos originales que ya tenías
+  getCargaHorariaTotal() {
+    let horasTotal = 0;
+    for (let disp of this.disponibilidad) {
+      let tiempoDisp = disp.horaFin - disp.horaInicio;
+      horasTotal = horasTotal + tiempoDisp;
+    }
+    return horasTotal;
+  }
+
+  getCargaHorariaDia(dia: number) {
+    let horasTotal = 0;
+    for (let disp of this.disponibilidad) {
+      if (disp.diaSemana === dia) {
         let tiempoDisp = disp.horaFin - disp.horaInicio;
         horasTotal = horasTotal + tiempoDisp;
       }
-
-      return horasTotal
     }
-    getCargaHorariaDia(dia: number) {
-      let horasTotal = 0;
-
-      for (let disp of this.disponibilidad) {
-        if (disp.diaSemana === dia) {
-          let tiempoDisp = disp.horaFin - disp.horaInicio;
-          horasTotal = horasTotal + tiempoDisp;
-        }
-      }
-
-      return horasTotal
-    }
-  
+    return horasTotal;
+  }
 }
 
 export class Administrador extends Perfil<Administrador>{
