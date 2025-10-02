@@ -143,9 +143,13 @@ export class BasededatosService {
   solicitarTurno(turno: Turno): Observable<Turno> {
     return this.http.post<any>(this.apiUrl + '/solicitarTurno', turno).pipe(
       map(respuesta => {
-        if (respuesta.valido && respuesta.turno) {
+        //puse este log para que me diga bien cual es el error
+        console.log('Respuesta del backend:', respuesta);
+        //entonces cambie de valido a exito
+        if (respuesta.exito && respuesta.turno) {
           const nuevoTurno = new Turno();
-          nuevoTurno.cargarDatos(respuesta.turno);
+          //Si el backend devuelve solo mensaje y idTurno, podés cargar solo idTurno
+          nuevoTurno.cargarDatos({ idTurno: respuesta.turno.idTurno });
           return nuevoTurno;
         } else {
           throw new Error(respuesta.mensaje || 'Error al solicitar turno');

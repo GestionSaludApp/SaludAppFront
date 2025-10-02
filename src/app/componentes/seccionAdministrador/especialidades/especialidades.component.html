@@ -1,47 +1,47 @@
-<div class="VentanaNivel0">
-  <br>
-  <h2>Lista de especialidades</h2>
+<div class="especialidades-container">
+  <h3 class="titulo">Lista de Especialidades</h3>
 
-  <div class="especialidades-grid">
-    <div *ngFor="let especialidad of especialidadesLocal; let i = index" class="especialidad-card">
-      <img [src]="this.prefijoImagen+especialidad.imagen" alt="Logo de especialidad" />
-
-      <div class="info">
-        <h3>{{ especialidad.nombre }}</h3>
-        <p>Duración: {{ especialidad.duracion }} minutos</p>
+  <div class="tarjetas">
+    <div *ngFor="let especialidad of especialidadesLocal; let i = index" class="tarjeta">
+      <img [src]="prefijoImagen + especialidad.imagen" alt="Logo de especialidad" class="imagen-especialidad">
+      
+      <div class="info-especialidad">
+        <h4>{{ especialidad.nombre }}</h4>
+        <p *ngIf="perfilActivo?.rol === 'administrador'">
+          Duración: {{ especialidad.duracion }} minutos
+        </p>
       </div>
 
-      <!-- SOLO PARA ADMIN -->
-      <ng-container *ngIf="perfilActivo?.rol === 'administrador'">
-        <div class="acciones">
-          <button class="btn editar" (click)="mostrarPanelEditarEspecialidad(i)">Editar</button>
-          <button class="btn eliminar" (click)="eliminarEspecialidad(especialidad)">Eliminar</button>
+      <div *ngIf="perfilActivo?.rol === 'administrador'" class="botones-admin">
+        <button class="btn-editar" (click)="mostrarPanelEditarEspecialidad(i)">Editar</button>
+        <button class="btn-eliminar" (click)="eliminarEspecialidad(especialidad)">Eliminar</button>
+
+        <div *ngIf="mostrarPanelEditar[i]" class="editar-panel">
+          <label for="nombre-{{i}}">Nombre:</label>
+          <input type="text" id="nombre-{{i}}" [(ngModel)]="especialidadEditada.nombre" required>
+
+          <label for="duracion-{{i}}">Duración (minutos):</label>
+          <input type="number" id="duracion-{{i}}" [(ngModel)]="especialidadEditada.duracion" required min="1">
+
+          <div class="botones-panel">
+            <button class="btn-guardar" (click)="editarEspecialidad()">Guardar</button>
+            <button class="btn-cancelar" (click)="cerrarPaneles()">Cancelar</button>
+          </div>
         </div>
-
-        <!-- Panel de edición -->
-        <div *ngIf="mostrarPanelEditar[i]" class="editar-form">
-          <label>Nombre:</label>
-          <input type="text" [(ngModel)]="especialidadEditada.nombre" />
-
-          <label>Duración (minutos):</label>
-          <input type="number" [(ngModel)]="especialidadEditada.duracion" min="1" />
-
-          <button class="btn guardar" (click)="editarEspecialidad()">Guardar</button>
-          <button class="btn cancelar" (click)="cerrarPaneles()">Cancelar</button>
-        </div>
-      </ng-container>
+      </div>
     </div>
   </div>
 
-  <!-- SOLO ADMIN -->
-  <ng-container *ngIf="perfilActivo?.rol === 'administrador'">
-    <button class="btn agregar" (click)="mostrarPanelNuevaEspecialidad()">Agregar especialidad</button>
+  <!-- Agregar nueva especialidad -->
+  <div *ngIf="perfilActivo?.rol === 'administrador'" class="agregar-especialidad">
+    <button class="btn-agregar" (click)="mostrarPanelNuevaEspecialidad()">Agregar Especialidad</button>
     <div *ngIf="mostrarPanelNueva">
       <app-nueva-especialidad></app-nueva-especialidad>
     </div>
-  </ng-container>
+  </div>
 
-  <div class="acciones-globales">
-    <button class="btn exportar" (click)="exportarCSV()">⬇️ Exportar CSV</button>
+  <!-- Exportar CSV -->
+  <div class="exportar">
+    <button class="btn-exportar" (click)="exportarCSV()">Exportar</button>
   </div>
 </div>

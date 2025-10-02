@@ -23,7 +23,7 @@ export class VerTurnosDisponiblesComponent implements OnInit {
   
   disponibilidadesActivas: Disponibilidad[] = [];
   turnosDisponibles: Turno[] = [];
-  turnosActivos: Turno[] = [];   // ✅ nuevos: turnos asignados al usuario
+  turnosActivos: Turno[] = [];   // nuevos: turnos asignados al usuario
 
   duracion: number = 20;
 
@@ -46,7 +46,7 @@ export class VerTurnosDisponiblesComponent implements OnInit {
       this.seccionalesLocal = seccionales.slice(1);
     });
 
-    // 🚀 Cargar turnos asignados al usuario al iniciar
+    // Cargar turnos asignados al usuario al iniciar
     let idPerfil = this.usuarioActual.perfil?.idPerfil;
     if (idPerfil) {
       this.baseDeDatos.buscarTurnosActivos({ idPerfil }).subscribe({
@@ -82,10 +82,12 @@ export class VerTurnosDisponiblesComponent implements OnInit {
     } else {
       return;
     }
+
+    console.log('Turno a solicitar:', turno);
     
     this.baseDeDatos.solicitarTurno(turno).subscribe({
       next: () => {
-        // ✅ Mover turno de disponibles a activos
+        // Mover turno de disponibles a activos
         this.turnosActivos.push(turno);
         this.turnosDisponibles = this.turnosDisponibles.filter(t => t.idTurno !== turno.idTurno);
         alert('✅ Turno confirmado');
@@ -97,7 +99,7 @@ export class VerTurnosDisponiblesComponent implements OnInit {
     });
   }
 
-  // ✅ convierte minutos a formato hh:mm
+  // convierte minutos a formato hh:mm
   leerMinutos(minutos: number): string {
     const horas = Math.floor(minutos / 60);
     const mins = minutos % 60;
