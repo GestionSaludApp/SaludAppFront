@@ -83,7 +83,11 @@ export class SeccionalesComponent implements OnInit{
   */
 
 export class SeccionalesComponent implements OnInit, OnDestroy {
-  seccionalesLocal: Seccional[] = [];
+  seccionalesLocal: Seccional[] = [
+    { idSeccional:8, nombre: 'Seccional Centro', imagen: 'public/seccionales/seccional1.jpg', direccion: 'Av. Centro 123', ciudad: 'Ciudad', provincia: 'Provincia', telefono: '123456789', email: 'centro@email.com' },
+    { idSeccional:9, nombre: 'Seccional Norte', imagen: 'public/seccionales/seccional2.jpg', direccion: 'Calle Norte 456', ciudad: 'Ciudad', provincia: 'Provincia', telefono: '987654321', email: 'norte@email.com' },
+    // agregá más 
+  ];
   prefijoImagen = prefijoImagen; // asegurate de importar/definir prefijoImagen
   private perfilSubscripcion: Subscription | null = null;
   perfilActivo: Perfil | null = null;
