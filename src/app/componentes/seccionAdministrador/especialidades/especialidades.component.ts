@@ -68,7 +68,7 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
             imagen = '/especialidades/oncologia.jpg';
             break;
           case 'Otorrinolaringología':
-            imagen = '/especialidades/otorrinolaringología.jpg';
+            imagen = '/especialidades/otorrinolaringologia.jpg';
             break;
           case 'Pediatria':
             imagen = '/especialidades/pediatria.jpg';
