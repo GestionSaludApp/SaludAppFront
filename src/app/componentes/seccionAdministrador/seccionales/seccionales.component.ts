@@ -83,12 +83,7 @@ export class SeccionalesComponent implements OnInit{
   */
 
 export class SeccionalesComponent implements OnInit, OnDestroy {
-  seccionalesLocal: Seccional[] = [
-    { idSeccional:7, nombre: 'Avellaneda Centro', imagen: '/seccionales/seccional1.jpg', direccion: 'Av. Mitre 1230', ciudad: 'Avellaneda', provincia: 'Buenos Aires', telefono: '987654321', email: 'centroAvellaneda@email.com' },
-    { idSeccional:8, nombre: 'Ituzaingó Centro', imagen: '/seccionales/seccional2.jpg', direccion: 'calle 26 de abril', ciudad: 'Ituzaingó', provincia: 'Buenos Aires', telefono: '123456789', email: 'centroItuzaingo@email.com' },
-    { idSeccional:9, nombre: 'Lomas de zamora Centro', imagen: '/seccionales/seccional3.jpg', direccion: 'Av. Alberti', ciudad: 'Lomaz de Zamora', provincia: 'Buenos Aires', telefono: '425636200', email: 'centroQuilmes@email.com' },
-    { idSeccional:10, nombre: 'Quilmes', imagen: '/seccionales/seccional4.png', direccion: 'Av. Calchaqui', ciudad: 'Quilmes', provincia: 'Buenos Aires', telefono: '425636987', email: 'centroLomas@email.com' }
-  ];
+  seccionalesLocal: Seccional[] = [];
   prefijoImagen = prefijoImagen; // asegurate de importar/definir prefijoImagen
   private perfilSubscripcion: Subscription | null = null;
   perfilActivo: Perfil | null = null;
@@ -111,15 +106,39 @@ export class SeccionalesComponent implements OnInit, OnDestroy {
 
     // Cuando cargas las seccionales, inicializá también el array de flags
     this.baseDeDatos.buscarSeccionales(() => {
-      // atención al slice(1) — confirmá si realmente querés omitir el primer elemento
-      //this.seccionalesLocal = seccionales.slice(1);
-
-      // inicializar mostrarPanelEditar con el tamaño correcto
-      this.mostrarPanelEditar = new Array(this.seccionalesLocal.length).fill(false);
-
-      // si el callback viene de fuera de Angular:
-      try { this.cd.detectChanges(); } catch (e) { /* ignora si no está disponible */ }
+    this.seccionalesLocal = seccionales.map(s => {
+      let imagen = '';
+  
+      switch (s.nombre.trim()) {
+        case 'Avellaneda Centro':
+          imagen = '/seccionales/seccional1.jpg';
+          break;
+        case 'Ituzaingó':
+          imagen = '/seccionales/seccional2.jpg';
+          break;
+        case 'La Plata':
+          imagen = '/seccionales/seccional3.jpg';
+          break;
+        case 'Lomas de Zamora':
+          imagen = '/seccionales/seccional4.jpg';
+          break;
+        case 'Moron':
+          imagen = '/seccionales/seccional5.jpg';
+          break;
+        case 'Quilmes':
+          imagen = '/seccionales/seccional6.jpg';
+          break;
+        default:
+          imagen = '/seccionales/default.jpg';
+      }
+  
+      return { ...s, imagen };
     });
+  
+    this.mostrarPanelEditar = new Array(this.seccionalesLocal.length).fill(false);
+    try { this.cd.detectChanges(); } catch (e) {}
+  });
+
   }
 
   ngOnDestroy(): void {
