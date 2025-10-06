@@ -84,10 +84,10 @@ export class SeccionalesComponent implements OnInit{
 
 export class SeccionalesComponent implements OnInit, OnDestroy {
   seccionalesLocal: Seccional[] = [
-    { idSeccional:1, nombre: 'Avellaneda Centro', imagen: '/seccionales/seccional1.jpg', direccion: 'Av. Mitre 1230', ciudad: 'Avellaneda', provincia: 'Buenos Aires', telefono: '987654321', email: 'centroAvellaneda@email.com' },
-    { idSeccional:2, nombre: 'Ituzaingó Centro', imagen: '/seccionales/seccional2.jpg', direccion: 'calle 26 de abril', ciudad: 'Ituzaingó', provincia: 'Buenos Aires', telefono: '123456789', email: 'centroItuzaingo@email.com' },
-    { idSeccional:3, nombre: 'Lomas de zamora Centro, imagen: '/seccionales/seccional3.jpg', direccion: 'Av. Alberti', ciudad: 'Lomaz de Zamora', provincia: 'Buenos Aires', telefono: '425636200', email: 'centroQuilmes@email.com' },
-     { idSeccional:4, nombre: 'Quilmes', imagen: '/seccionales/seccional4.jpg', direccion: 'Av. Calchaqui', ciudad: 'Quilmes', provincia: 'Buenos Aires', telefono: '425636987', email: 'centroLomas@email.com' }
+    { idSeccional:7, nombre: 'Avellaneda Centro', imagen: '/seccionales/seccional1.jpg', direccion: 'Av. Mitre 1230', ciudad: 'Avellaneda', provincia: 'Buenos Aires', telefono: '987654321', email: 'centroAvellaneda@email.com' },
+    { idSeccional:8, nombre: 'Ituzaingó Centro', imagen: '/seccionales/seccional2.jpg', direccion: 'calle 26 de abril', ciudad: 'Ituzaingó', provincia: 'Buenos Aires', telefono: '123456789', email: 'centroItuzaingo@email.com' },
+    { idSeccional:9, nombre: 'Lomas de zamora Centro, imagen: '/seccionales/seccional3.jpg', direccion: 'Av. Alberti', ciudad: 'Lomaz de Zamora', provincia: 'Buenos Aires', telefono: '425636200', email: 'centroQuilmes@email.com' },
+     { idSeccional:10, nombre: 'Quilmes', imagen: '/seccionales/seccional4.jpg', direccion: 'Av. Calchaqui', ciudad: 'Quilmes', provincia: 'Buenos Aires', telefono: '425636987', email: 'centroLomas@email.com' }
   ];
   prefijoImagen = prefijoImagen; // asegurate de importar/definir prefijoImagen
   private perfilSubscripcion: Subscription | null = null;
