@@ -38,7 +38,7 @@
 <div class="VentanaNivel0">
   <p>Lista de seccionales</p>
 
-  <div class="seccionales-grid">
+  <div class="seccionales-grid" *ngIf="seccionalesLocal.length > 0">
     <div *ngFor="let seccional of seccionalesLocal; let i = index" class="VentanaNivel1 seccional-card">
       
       <div class="seccional-header">
