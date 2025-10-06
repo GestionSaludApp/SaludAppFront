@@ -106,7 +106,7 @@ export class SeccionalesComponent implements OnInit, OnDestroy {
 
     // Cuando cargas las seccionales, inicializá también el array de flags
     this.baseDeDatos.buscarSeccionales(() => {
-    this.seccionalesLocal = seccionales.map(s => {
+    this.seccionalesLocal = seccionales.filter(s => s.idSeccional !== 0).map(s => {
       let imagen = '';
   
       switch (s.nombre.trim()) {
@@ -120,7 +120,7 @@ export class SeccionalesComponent implements OnInit, OnDestroy {
           imagen = '/seccionales/seccional3.jpg';
           break;
         case 'Lomas de Zamora':
-          imagen = '/seccionales/seccional4.jpg';
+          imagen = '/seccionales/seccional4.png';
           break;
         case 'Moron':
           imagen = '/seccionales/seccional5.jpg';
