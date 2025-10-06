@@ -47,28 +47,28 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
 
         switch (esp.nombre.trim()) {
           case 'Cardiología':
-            imagen = '/especialidades/cardiologia.jpg';
+            imagen = '/especialidades/cardiologia.png';
             break;
           case 'Clinica Médica':
-            imagen = '/especialidades/clinicaMedica.jpg';
+            imagen = '/especialidades/clinicaMedica.png';
             break;
           case 'Dermatologia':
-            imagen = '/especialidades/dermatologia.jpg';
+            imagen = '/especialidades/dermatologia.png';
             break;
           case 'Ginecologia':
             imagen = '/especialidades/ginicologia.jpg';
             break;
           case 'Neurologia':
-            imagen = '/especialidades/neurologia.jpg';
+            imagen = '/especialidades/neurologia.png';
             break;
           case 'Oftalmologia':
-            imagen = '/especialidades/oftamologia.jpg';
+            imagen = '/especialidades/oftamologia.png';
             break;
           case 'Oncología':
-            imagen = '/especialidades/oncologia.jpg';
+            imagen = '/especialidades/oncologia.png';
             break;
           case 'Otorrinolaringología':
-            imagen = '/especialidades/otorrinolaringologia.jpg';
+            imagen = '/especialidades/otorrinolaringologia.png';
             break;
           case 'Pediatria':
             imagen = '/especialidades/pediatria.jpg';
@@ -77,14 +77,11 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
             imagen = '/especialidades/psiquiatria.jpg';
             break;
           case 'Traumatologia':
-            imagen = '/especialidades/traumatologia.jpg';
+            imagen = '/especialidades/traumatologia.png';
             break;
           default:
             imagen = '/especialidades/default.jpg';
         }
-
-        return { ...esp, imagen };
-    });
       
       this.mostrarPanelEditar = this.especialidadesLocal.map(() => false);
     });
