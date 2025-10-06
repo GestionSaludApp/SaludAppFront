@@ -23,16 +23,28 @@
   gap: 20px;
 }
 
-/* Cada card 
+/* Cada card */
 .seccional-card {
   background-color: #fff;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 260px;
+  padding: 1rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; 
+  gap: 1.5rem;
   align-items: center;
-}*/
+  transition: transform 0.2s ease-in-out;
+}
+
+.seccional-card: hover{
+   transform: scale(1.03);
+}
 
 /* Header de cada seccional */
 .seccional-header {
@@ -121,20 +133,6 @@ button:hover {
   justify-content: center;
   align-items: flex-start; /* 👈 clave: todas alineadas arriba */
   gap: 1.5rem;
-}
-
-.tarjeta {
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 260px;
-  padding: 1rem;
-  text-align: center;
-  transition: transform 0.2s ease-in-out;
-}
-
-.tarjeta:hover {
-  transform: scale(1.03);
 }
 
 .imagen-seccional {
