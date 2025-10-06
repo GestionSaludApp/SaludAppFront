@@ -3,7 +3,7 @@
 
   <div class="tarjetas">
     <div *ngFor="let especialidad of especialidadesLocal; let i = index" class="tarjeta">
-      <img [src]="prefijoImagen + especialidad.imagen" alt="Logo de especialidad" class="imagen-especialidad">
+      <img [src]="especialidad.imagen" alt="Logo de especialidad" class="imagen-especialidad">
       
       <div class="info-especialidad">
         <h4>{{ especialidad.nombre }}</h4>
