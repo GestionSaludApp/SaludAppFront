@@ -23,12 +23,7 @@ import { prefijoImagen } from '../../../credenciales/datos';
   styleUrls: ['./especialidades.component.css']
 })
 export class EspecialidadesComponent implements OnInit, OnDestroy {
-  especialidadesLocal: Especialidad[] = [
-    { idEspecialidad: 1, nombre: 'Cardiología', duracion: 30, imagen: 'public/especialidades/cardiologia.jpg' },
-    { idEspecialidad: 2, nombre: 'Dermatología', duracion: 20, imagen: 'public/especialidades/dermatologia.jpg' },
-    { idEspecialidad: 3, nombre: 'Pediatría', duracion: 25, imagen: 'public/especialidades/pediatria.jpg' },
-    // agrgar mas
-  ];
+  especialidadesLocal: Especialidad[] = [];
   prefijoImagen = prefijoImagen;
   private perfilSubscripcion: Subscription | null = null;
   perfilActivo: Perfil | null = null;
@@ -45,7 +40,52 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
       console.log('Perfil activo:', this.perfilActivo);
     });
     this.baseDeDatos.buscarEspecialidades(() => {
-      this.especialidadesLocal = especialidades.slice(1);
+       this.especialidadesLocal = especialidades
+      .filter(esp => esp.idEspecialidad !== 0)
+      .map(esp => {
+        let imagen = '';
+
+        switch (esp.nombre.trim()) {
+          case 'Cardiología':
+            imagen = '/especialidades/cardiologia.jpg';
+            break;
+          case 'Clinica Médica':
+            imagen = '/especialidades/clinicaMedica.jpg';
+            break;
+          case 'Dermatologia':
+            imagen = '/especialidades/dermatologia.jpg';
+            break;
+          case 'Ginecologia':
+            imagen = '/especialidades/ginicologia.jpg';
+            break;
+          case 'Neurologia':
+            imagen = '/especialidades/neurologia.jpg';
+            break;
+          case 'Oftalmologia':
+            imagen = '/especialidades/oftamologia.jpg';
+            break;
+          case 'Oncología':
+            imagen = '/especialidades/oncologia.jpg';
+            break;
+          case 'Otorrinolaringología':
+            imagen = '/especialidades/otorrinolaringología.jpg';
+            break;
+          case 'Pediatria':
+            imagen = '/especialidades/pediatria.jpg';
+            break;
+          case 'Psiquiatria':
+            imagen = '/especialidades/psiquiatria.jpg';
+            break;
+          case 'Traumatologia':
+            imagen = '/especialidades/traumatologia.jpg';
+            break;
+          default:
+            imagen = '/especialidades/default.jpg';
+        }
+
+        return { ...esp, imagen };
+    });
+      
       this.mostrarPanelEditar = this.especialidadesLocal.map(() => false);
     });
     console.log('Especialidades cargadas:', this.especialidadesLocal);
