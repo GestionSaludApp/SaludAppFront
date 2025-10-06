@@ -49,6 +49,15 @@
         <img [src]="seccional.imagen" alt="Logo de seccional" width="150" height="150">
       </div>
 
+         <!-- Info básica debajo de la imagen -->
+        <div class="seccional-info">
+          <h4>{{ seccional.nombre }}</h4>
+          <p>Dirección: {{ seccional.direccion }}</p>
+          <p>Ciudad: {{ seccional.ciudad }}</p>
+          <p>Provincia: {{ seccional.provincia }}</p>
+          <p>Teléfono: {{ seccional.telefono }}</p>
+        </div>
+
       <ng-container *ngIf="perfilActivo">
         <div *ngIf="perfilActivo.rol === 'administrador'" class="seccional-admin">
           {{ seccional.nombre }} *placeholder*
