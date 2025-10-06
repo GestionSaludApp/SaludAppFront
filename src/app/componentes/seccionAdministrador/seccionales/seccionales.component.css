@@ -14,36 +14,36 @@
   font-weight: bold;
   margin-bottom: 20px;
   color: #333;
+  text-align: center;
 }
 
 /* Grid de seccionales */
 .seccionales-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  align-items: start;
 }
 
 /* Cada card */
 .seccional-card {
   background-color: #fff;
   border-radius: 16px;
-  padding: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  width: 260px;
-  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start; 
-  gap: 1.5rem;
+  justify-content: flex-start;
   align-items: center;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
 }
 
-.seccional-card: hover{
-   transform: scale(1.03);
+/* 🔧 Corregido: antes decía ": hover" con espacio */
+.seccional-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
 /* Header de cada seccional */
@@ -52,6 +52,7 @@
   font-size: 1.2rem;
   margin-bottom: 10px;
   text-align: center;
+  color: #333;
 }
 
 /* Imagen de la seccional */
@@ -60,8 +61,12 @@
 }
 
 .seccional-imagen img {
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid #ccc;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  object-fit: cover;
 }
 
 /* Panel de edición */
@@ -91,16 +96,17 @@
 /* Botones */
 button {
   cursor: pointer;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border: none;
   border-radius: 6px;
   margin-top: 10px;
   margin-right: 8px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.1s;
 }
 
 button:hover {
-  opacity: 0.85;
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 /* Botones de edición */
