@@ -23,7 +23,12 @@ import { prefijoImagen } from '../../../credenciales/datos';
   styleUrls: ['./especialidades.component.css']
 })
 export class EspecialidadesComponent implements OnInit, OnDestroy {
-  especialidadesLocal: Especialidad[] = [];
+  especialidadesLocal: Especialidad[] = [
+    { idEspecialidad: 1, nombre: 'Cardiología', duracion: 30, imagen: 'public/especialidades/cardiologia.jpg' },
+    { idEspecialidad: 2, nombre: 'Dermatología', duracion: 20, imagen: 'public/especialidades/dermatologia.jpg' },
+    { idEspecialidad: 3, nombre: 'Pediatría', duracion: 25, imagen: 'public/especialidades/pediatria.jpg' },
+    // agrgar mas
+  ];
   prefijoImagen = prefijoImagen;
   private perfilSubscripcion: Subscription | null = null;
   perfilActivo: Perfil | null = null;
