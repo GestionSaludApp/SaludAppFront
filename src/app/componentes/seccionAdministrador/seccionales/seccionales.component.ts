@@ -113,7 +113,7 @@ export class SeccionalesComponent implements OnInit, OnDestroy {
         case 'Avellaneda Centro':
           imagen = '/seccionales/seccional1.jpg';
           break;
-        case 'Ituzaingó':
+        case 'Ituzaingó Centro':
           imagen = '/seccionales/seccional2.jpg';
           break;
         case 'La Plata':
