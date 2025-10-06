@@ -111,7 +111,7 @@ export class SeccionalesComponent implements OnInit, OnDestroy {
     // Cuando cargas las seccionales, inicializá también el array de flags
     this.baseDeDatos.buscarSeccionales(() => {
       // atención al slice(1) — confirmá si realmente querés omitir el primer elemento
-      this.seccionalesLocal = seccionales.slice(1);
+      //this.seccionalesLocal = seccionales.slice(1);
 
       // inicializar mostrarPanelEditar con el tamaño correcto
       this.mostrarPanelEditar = new Array(this.seccionalesLocal.length).fill(false);
