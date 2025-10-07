@@ -54,13 +54,13 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
             imagen = '/especialidades/dermatologia.png';
             break;
           case 'Ginecologia':
-            imagen = '/especialidades/ginicologia.jpg';
+            imagen = '/especialidades/ginecologia.jpg';
             break;
           case 'Neurologia':
             imagen = '/especialidades/neurologia.png';
             break;
           case 'Oftalmologia':
-            imagen = '/especialidades/oftamologia.png';
+            imagen = '/especialidades/oftalmologia.png';
             break;
           case 'Oncología':
             imagen = '/especialidades/oncologia.png';
@@ -72,14 +72,14 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
             imagen = '/especialidades/pediatria.jpg';
             break;
           case 'Psiquiatria':
-            imagen = '/especialidades/psiquiatria.jpg';
+            imagen = '/especialidades/psiquiatria.png';
             break;
           case 'Traumatologia':
-            imagen = '/especialidades/traumatologia.png';
+            imagen = '/especialidades/traumatologia.jpg';
             break;
           default:
             imagen = '/especialidades/default.jpg';
-        }
+      }
         return { ...esp, imagen };
       });
       
