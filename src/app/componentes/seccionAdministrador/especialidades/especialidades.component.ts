@@ -80,6 +80,7 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
           default:
             imagen = '/especialidades/default.jpg';
       }
+        console.log(`Especialidad: "${esp.nombre}" → Imagen: "${imagen}"`);
         return { ...esp, imagen };
       });
       
