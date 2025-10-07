@@ -40,9 +40,7 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
       console.log('Perfil activo:', this.perfilActivo);
     });
     this.baseDeDatos.buscarEspecialidades(() => {
-       this.especialidadesLocal = especialidades
-      .filter(esp => esp.idEspecialidad !== 0)
-      .map(esp => {
+       this.especialidadesLocal = especialidades.filter(esp => esp.idEspecialidad !== 0).map(esp => {
         let imagen = '';
 
         switch (esp.nombre.trim()) {
