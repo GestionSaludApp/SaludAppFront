@@ -82,6 +82,8 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
           default:
             imagen = '/especialidades/default.jpg';
         }
+        return { ...esp, imagen };
+      });
       
       this.mostrarPanelEditar = this.especialidadesLocal.map(() => false);
     });
