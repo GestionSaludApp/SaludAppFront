@@ -4,6 +4,7 @@ import { BasededatosService } from '../../servicios/basededatos.service';
 import { NavegacionService } from '../../servicios/navegacion.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ingreso',
@@ -41,15 +42,37 @@ export class IngresoComponent {
     this.passwordIngresado = '';
   }
 
-  ingresar(){
+ingresar() {
     if (this.verificarEmail() === true) {
       this.baseDeDatos.ingresarUsuario(this.emailIngresado, this.passwordIngresado).subscribe({
-        next: () => {
+        next: (respuesta: any) => {
+          // Suponiendo que la API te devuelve los datos del usuario (como nombre o email)
+          const nombreUsuario = respuesta?.nombre || this.emailIngresado;
+  
           this.limpiarCampos();
+  
+          // SweetAlert de bienvenida
+          Swal.fire({
+            title: `¡Bienvenido, ${nombreUsuario}! 👋`,
+            text: 'Has iniciado sesión correctamente.',
+            icon: 'success',
+            confirmButtonText: 'Continuar',
+            confirmButtonColor: '#0d6efd',
+            timer: 2500,
+            timerProgressBar: true
+          });
+  
+          // Redirigir al inicio
           this.navegar.irInicio();
         },
         error: () => {
-          alert('No se pudo completar el ingreso. Intente nuevamente o verifique los datos.');
+          Swal.fire({
+            title: 'Error al iniciar sesión',
+            text: 'No se pudo completar el ingreso. Verifica los datos e intenta nuevamente.',
+            icon: 'error',
+            confirmButtonText: 'Cerrar',
+            confirmButtonColor: '#dc3545'
+          });
           this.limpiarCampos();
         }
       });
