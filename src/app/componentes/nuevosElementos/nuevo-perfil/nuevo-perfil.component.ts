@@ -8,6 +8,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 import { NavegacionService } from '../../../servicios/navegacion.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nuevo-perfil',
@@ -30,16 +31,32 @@ export class NuevoPerfilComponent {
 
   guardarDatosUsuario(datos: any) {this.datosPerfil = datos;}
 
-  guardarNuevoPerfil(){
+guardarNuevoPerfil(){
     this.baseDeDatos.registrarPerfilAdicional(this.usuarioActivo.idUsuario, this.datosPerfil).subscribe({
       next: () => {
-        alert('Usuario registrado con éxito.');
-        this.limpiarFormulario();
-        this.navegar.irDatosPersonales();
+        Swal.fire({
+          title: '¡Usuario registrado!',
+          text: 'El registro se realizó con éxito.',
+          icon: 'success',
+          timer: 2000,
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#0d6efd'
+        }).then(() => {
+          this.limpiarFormulario();
+          this.navegar.irDatosPersonales();
+        });
       },
       error: () => {
-        alert('No se pudo completar el registro. Verifique los datos e intente nuevamente.');
-        this.limpiarFormulario();
+        Swal.fire({
+          title: 'Error',
+          text: 'No se pudo completar el registro. Verifique los datos e intente nuevamente.',
+          icon: 'error',
+          timer: 2000,
+          confirmButtonText: 'Reintentar',
+          confirmButtonColor: '#dc3545'
+        }).then(() => {
+          this.limpiarFormulario();
+        });
       }
     });
   }
