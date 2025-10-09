@@ -9,6 +9,7 @@ import { Perfil } from '../../../clases/perfil';
 import { NuevaEspecialidadComponent } from "../../nuevosElementos/nueva-especialidad/nueva-especialidad.component";
 import { FormsModule } from '@angular/forms';
 import { prefijoImagen } from '../../../credenciales/datos';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-especialidades',
