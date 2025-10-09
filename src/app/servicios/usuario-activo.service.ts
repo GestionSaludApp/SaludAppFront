@@ -27,7 +27,7 @@ export class UsuarioActivoService {
         localStorage.removeItem('usuarioActivo');
       }
     }
-
+    
     //  Actualizar estado de sesión cada vez que cambie el usuario
     this.usuarioSubject.subscribe(usuario => {
       this.sesionActivaSubject.next(!!usuario);
