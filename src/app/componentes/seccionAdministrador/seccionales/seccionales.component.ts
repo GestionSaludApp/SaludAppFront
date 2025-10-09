@@ -9,6 +9,7 @@ import { BasededatosService } from '../../../servicios/basededatos.service';
 import { seccionales } from '../../../funciones/listas';
 import { prefijoImagen } from '../../../credenciales/datos';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-seccionales',
@@ -199,6 +200,15 @@ export class SeccionalesComponent implements OnInit, OnDestroy {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    Swal.fire({
+      title: '¡Exportación completa!',
+      text: 'Los datos se exportaron correctamente.',
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#0d6efd'
+    });
+
   }
 
   generarCSV(seccionales: Seccional[]): string {
