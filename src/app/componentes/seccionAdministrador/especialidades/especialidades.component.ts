@@ -116,6 +116,14 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    Swal.fire({
+      title: '¡Exportación completa!',
+      text: 'Los datos se exportaron correctamente.',
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#0d6efd'
+    });
   }
 
   generarCSV(especialidades: Especialidad[]): string {
