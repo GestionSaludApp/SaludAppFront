@@ -8,6 +8,7 @@ import { especialidades, seccionales } from '../../../funciones/listas';
 import { FormsModule } from '@angular/forms';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 import { TitleCasePipe } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ver-turnos-disponibles',
@@ -90,11 +91,24 @@ export class VerTurnosDisponiblesComponent implements OnInit {
         // Mover turno de disponibles a activos
         this.turnosActivos.push(turno);
         this.turnosDisponibles = this.turnosDisponibles.filter(t => t.idTurno !== turno.idTurno);
-        alert('✅ Turno confirmado');
+    
+        Swal.fire({
+          title: '¡Turno confirmado!',
+          text: 'Tu turno fue reservado con éxito.',
+          icon: 'success',
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#0d6efd'
+        });
       },
       error: (error) => {
         console.error('Error al solicitar turno:', error);
-        alert('❌ No se pudo confirmar el turno');
+        Swal.fire({
+          title: 'Error al confirmar turno',
+          text: 'No se pudo reservar el turno. Por favor, intenta nuevamente.',
+          icon: 'error',
+          confirmButtonText: 'Cerrar',
+          confirmButtonColor: '#dc3545'
+        });
       }
     });
   }
