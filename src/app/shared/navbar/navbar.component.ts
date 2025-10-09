@@ -36,5 +36,5 @@ export class NavbarComponent implements OnInit {
       confirmButtonColor: '#0d6efd'
     });
   }
-
+  
 }
