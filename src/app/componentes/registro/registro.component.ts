@@ -10,6 +10,8 @@ import { NuevoProfesionalComponent } from "../nuevosElementos/nuevo-profesional/
 import { NuevoAdministradorComponent } from "../nuevosElementos/nuevo-administrador/nuevo-administrador.component";
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-registro',
   standalone: true,
@@ -41,25 +43,46 @@ export class RegistroComponent {
 
   constructor(private baseDeDatos: BasededatosService, private navegar: NavegacionService) {}
   
-  registrarUsuario() {
-    console.log("llego a registro de usuario");
-    if (this.verificarDatosIngresados() && this.verificarDatosUsuarioEmitidos(this.rolSeleccionado, this.datosUsuario)) {
+registrarUsuario() {
+    console.log("Llegó a registro de usuario");
+  
+    if (
+      this.verificarDatosIngresados() &&
+      this.verificarDatosUsuarioEmitidos(this.rolSeleccionado, this.datosUsuario)
+    ) {
       let nuevoUsuario = new Usuario();
       nuevoUsuario.email = this.emailIngresado;
       nuevoUsuario.password = this.passwordIngresado;
       nuevoUsuario.fechaCreacion = fechaAhora;
       nuevoUsuario.ultimoIngreso = fechaAhora;
-
+  
       this.baseDeDatos.registrarUsuario(nuevoUsuario, this.datosUsuario, this.imagenSeleccionada)
         .subscribe({
           next: () => {
-            alert('Usuario registrado con éxito.');
             this.limpiarCampos();
+  
+            // SweetAlert de éxito
+            Swal.fire({
+              title: '¡Usuario registrado con éxito! 🎉',
+              text: 'Tu cuenta fue creada correctamente. Ya puedes iniciar sesión.',
+              icon: 'success',
+              confirmButtonText: 'Aceptar',
+              confirmButtonColor: '#0d6efd'
+            });
+  
             this.navegar.irInicio();
           },
           error: () => {
-            alert('No se pudo completar el registro. Verifique los datos e intente nuevamente.');
             this.limpiarCampos();
+  
+            // SweetAlert de error
+            Swal.fire({
+              title: 'Error al registrar usuario',
+              text: 'No se pudo completar el registro. Verifica los datos e intenta nuevamente.',
+              icon: 'error',
+              confirmButtonText: 'Cerrar',
+              confirmButtonColor: '#dc3545'
+            });
           }
         });
     }
